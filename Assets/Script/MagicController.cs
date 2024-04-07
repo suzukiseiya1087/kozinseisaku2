@@ -10,7 +10,7 @@ public class MagicController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // 魔法を使うキー
+        if (Input.GetKeyDown(KeyCode.K)) // 魔法を使うキー
         {
             LiftNearbyBlocks();
         }

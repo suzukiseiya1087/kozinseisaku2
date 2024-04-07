@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace ClearSky
 {
@@ -15,12 +14,6 @@ namespace ClearSky
         bool isJumping = false;
         private bool alive = true;
 
-        public float jumpForce = 10f;
-        public bool isWindMagicActive = false;
-        public ParticleSystem windMagicEffect;
-
-
-
 
         // Start is called before the first frame update
         void Start()
@@ -29,7 +22,7 @@ namespace ClearSky
             anim = GetComponent<Animator>();
         }
 
-        void Update()
+        private void Update()
         {
             Restart();
             if (alive)
@@ -40,10 +33,6 @@ namespace ClearSky
                 Jump();
                 Run();
 
-            }
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                ActivateWindMagic();
             }
         }
         private void OnTriggerEnter2D(Collider2D other)
@@ -133,21 +122,6 @@ namespace ClearSky
                 anim.SetTrigger("idle");
                 alive = true;
             }
-        }
-
-        void ActivateWindMagic()
-        {
-            isWindMagicActive = true;
-            windMagicEffect.Play();
-            // 風魔法を使ったときの特別な挙動を追加する
-            // 例えば、空中に浮く力を加えるなど
-            rb.gravityScale = 0f; // 重力を無効化して空中に浮かせる
-        }
-
-        bool IsGrounded()
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-            return hit.collider != null;
         }
     }
 }
