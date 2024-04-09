@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class HPBar : MonoBehaviour
 {
-    [SerializeField] private Image _hpBarcurrent;
-    [SerializeField] private float _maxHealth;
-    private float currentHealth;
-    void Awake()
+    [SerializeField]
+    Human human;
+    RectTransform rect;
+
+    void Start()
     {
-        currentHealth = _maxHealth;
+        rect = GetComponent<RectTransform>();
     }
-    public void UpdateHP(float damage)
+
+    void Update()
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, _maxHealth);
-        _hpBarcurrent.fillAmount = currentHealth / _maxHealth;
+        //rect.localScale = new Vector2(human.PerHP, 1f);
     }
 }
-
 

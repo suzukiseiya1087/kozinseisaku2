@@ -6,13 +6,24 @@ public class ShootBullet : MonoBehaviour
 {
     public GameObject bulletPrefab; // 弾のプレハブ
     public Transform bulletSpawnPoint; // 弾を生成する位置
-    public PlayerStatus playerStatus; // プレイヤーのステータス
-
+                                       //public PlayerStatus playerStatus; // プレイヤーのステータス
+    public float shootCooldown = 3f; // 発射クールダウン
+    private float nextShootTime; // 次の発射可能時刻
     public float bulletSpeed = 10f; // 弾の速さ
 
+    private void Start()
+    {
+        nextShootTime = Time.time; // 初期化時に次の発射可能時刻を設定
+    }
     void Update()
     {
-        ShootWithRightClick();
+        //ShootWithRightClick();
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextShootTime) // 1は右クリック
+        {
+            Shoot();
+            nextShootTime = Time.time + shootCooldown; // 次の発射可能時刻を設定
+        }
+       
     }
 
     void ShootWithRightClick()
@@ -20,15 +31,15 @@ public class ShootBullet : MonoBehaviour
         // プレイヤーが右クリックしたかを検出
         if (Input.GetMouseButtonDown(0)) // 1は右クリック
         {
-            // MPが足りていれば魔法を発動
-            if (playerStatus.ConsumeMP(10)) // 10MP消費
-            {
+            //// MPが足りていれば魔法を発動
+            //if (playerStatus.ConsumeMP(10)) // 10MP消費
+            //{
                 Shoot();
-            }
-            else
-            {
-                Debug.Log("Not enough MP.");
-            }
+            //}
+            //else
+            //{
+            //    Debug.Log("Not enough MP.");
+            //}
         }
     }
 

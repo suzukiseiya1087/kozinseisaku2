@@ -8,6 +8,7 @@ TagManager:
   - Lightning
   - Ground
   - Floatable
+  - Gooal
   layers:
   - Default
   - TransparentFX
