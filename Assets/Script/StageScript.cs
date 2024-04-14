@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageScript : MonoBehaviour
 {
     //int型を変数StageTipSizeで宣言します。ここの数値は自動生成したいオブジェクトの端から端までの座標の大きさ
-    const int StageTipSize = 16;
+    const int StageTipSize = 24;
     //int型を変数currentTipIndexで宣言します。
     int currentTipIndex;
     //ターゲットキャラクターの指定が出来る様にするよ
